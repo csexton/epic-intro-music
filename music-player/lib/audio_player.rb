@@ -6,9 +6,11 @@ class AudioPlayer
   end
 
   def play
+    puts "playing #{file}"
     if File.which('afplay')
-      puts "playing #{file}"
       `afplay "#{file}"`
+    else File.which('mpg321')
+      `mpg321 "#{file}"`
     end
   end
 end
