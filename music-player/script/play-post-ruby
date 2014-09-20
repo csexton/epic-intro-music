@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require "net/http"
+require "uri"
+
+uri = URI.parse 'http://localhost:9292/'
+body = {
+ :url => ARGV[0],
+}
+res = Net::HTTP.post_form(uri,body)
+puts res.body
+

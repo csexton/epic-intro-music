@@ -2,11 +2,26 @@ require "rubygems"
 require "bundler"
 
 Bundler.require
+Dir["#{File.dirname(__FILE__)}/lib/*.rb"].each {|file| require file }
+
+def play(file)
+  AudioPlayer.new(file).play
+end
 
 get "/" do
-  "Hello world!"
+  <<-END
+    <html>
+      <form action="/" method="post">
+        <input name="url" value="http://www.freespecialeffects.co.uk/soundfx/sirens/police_s.wav">
+        <button>Send my greetings</button>
+      </form>
+    </html>
+  END
 end
 
 post "/" do
-  binding.pry
+  if params["url"]
+    play FileCache.new(params["url"]).path
+  end
+  "Yay!"
 end
