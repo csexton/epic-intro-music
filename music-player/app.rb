@@ -13,7 +13,7 @@ get "/" do
     <html>
       <form action="/" method="post">
         <input name="url" value="http://www.freespecialeffects.co.uk/soundfx/sirens/police_s.wav">
-        <button>Send my greetings</button>
+        <button>Play</button>
       </form>
     </html>
   END
