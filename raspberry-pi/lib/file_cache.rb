@@ -15,9 +15,7 @@ class FileCache
   private
 
   def download
-    open(file_path, "wb") do |file|
-      file << open(url).read
-    end
+    open(file_path, "wb") { |file| file << open(url).read }
     file_path
   end
 

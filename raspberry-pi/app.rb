@@ -12,7 +12,7 @@ get "/" do
   <<-END
     <html>
       <form action="/" method="post">
-        <input name="url" value="http://www.freespecialeffects.co.uk/soundfx/sirens/police_s.wav">
+        <input name="name" value="test.wav">
         <button>Play</button>
       </form>
     </html>
@@ -20,8 +20,8 @@ get "/" do
 end
 
 post "/" do
-  if params["url"]
-    play FileCache.new(params["url"]).path
+  if params["name"]
+    play NameFile.new(params["name"]).path
   end
   "Yay!"
 end
