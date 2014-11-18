@@ -12,7 +12,7 @@ get "/" do
   <<-END
     <html>
       <form action="/" method="post">
-        <input name="name" value="test.wav">
+        <input name="name" value="imperial-march">
         <button>Play</button>
       </form>
     </html>
@@ -23,5 +23,13 @@ post "/" do
   if params["name"]
     play NameFile.new(params["name"]).path
   end
-  "Yay!"
+  <<-END
+    <html>
+      <p>"Yay!"</p>
+      <form action="/" method="post">
+        <input name="name" value="imperial-march">
+        <button>Play</button>
+      </form>
+    </html>
+  END
 end

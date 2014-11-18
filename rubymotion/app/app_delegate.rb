@@ -31,8 +31,7 @@ class AppDelegate
   def locationManager(manager, didExitRegion: region)
     NSLog("didExitRegion")
     if region.isKindOfClass(CLBeaconRegion)
-    #  manager.stopRangingBeaconsInRegion(region)
-      Broadcast.new("didExitRegion" ).send
+      Broadcast.new.send("didExitRegion" )
     end
   end
 
@@ -46,7 +45,7 @@ class AppDelegate
     #  end
     #end
     if beacons.length > 0
-      Broadcast.new("didRangeBeacons").send
+      Broadcast.new.send("didRangeBeacons")
     end
   end
 
@@ -55,7 +54,8 @@ class AppDelegate
   end
 
   def beacon_region
-    uuid = NSUUID.alloc.initWithUUIDString("1313AAAA-4D60-42D4-92C1-94667C771306")
+    #uuid = NSUUID.alloc.initWithUUIDString("1313AAAA-4D60-42D4-92C1-94667C771306")
+    uuid = NSUUID.alloc.initWithUUIDString "C61652EF-D55A-41B2-8629-DA935A483365"
     beacon = CLBeaconRegion.alloc.initWithProximityUUID(uuid, identifier: "com.csexton.epic")
     beacon.notifyOnEntry = true
     beacon.notifyOnExit = true

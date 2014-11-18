@@ -20,12 +20,12 @@ class NameFile
 
   private
 
-  def temp_dir
-    Pathname.new(File.join(File.dirname(__FILE__), "..", "tmp"))
+  def dir
+    Pathname.new(File.join(File.dirname(__FILE__), "..", "music"))
   end
 
   def file_path(ext)
-    File.expand_path(temp_dir.join("#{name}.#{ext}"))
+    File.expand_path(dir.join("#{name}.#{ext}"))
   end
 end
 

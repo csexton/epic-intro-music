@@ -1,15 +1,9 @@
 class Broadcast
-  attr_reader :url, :data
+  EPIC_URL = "http://13e68089.ngrok.com"
 
-  def initialize(data)
-    @data = data
-    @url = "http://requestb.in/1ern5o91"
-  end
-
-  def send
-    NSLog "### Broadcast: send"
+  def send(data)
     BW::HTTP.post(url, { payload: data }) do |response|
-      NSLog "### Broadcast: send response: #{response}"
+      puts response.status_code
     end
   end
 end
